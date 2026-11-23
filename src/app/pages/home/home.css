@@ -1,0 +1,5 @@
+.home { max-width: 1100px; margin: 0 auto; padding: 0 16px 24px; }
+.welcome { text-align: center; color: #fff; padding: 36px 16px; margin: 0 -16px;
+  background: linear-gradient(135deg, #17375e, #2f6db5); }
+.welcome h1 { color: #fff; font-weight: 700; }
+.welcome p { margin: 0; }

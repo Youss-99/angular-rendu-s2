@@ -1,0 +1,44 @@
+<section class="list-section" id="conferences">
+  <div class="list-header">
+    <div class="list-icon">📅</div>
+    <div>
+      <h2>Liste des conférences à venir</h2>
+      <p>Cliquez sur une conférence pour afficher ses détails.</p>
+    </div>
+  </div>
+
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Taper le titre de la conférence"
+    [(ngModel)]="searchTitle"
+  />
+
+  <div class="cards">
+    @for (conf of filteredList; track conf.id) {
+      <article class="card-conf">
+        <h3>{{ conf.title | uppercase }}</h3>
+        <p><strong>Date :</strong> {{ conf.date | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>Lieu :</strong> {{ conf.place }}</p>
+        <p><strong>Places restantes :</strong> {{ remaining(conf) }}</p>
+        <button
+          type="button"
+          class="btn-register"
+          [class]="'btn-register ' + statusClass(conf)"
+          [disabled]="remaining(conf) === 0"
+          (click)="register(conf)"
+        >
+          S'inscrire
+        </button>
+      </article>
+    } @empty {
+      <p class="empty">
+        @if (list.length === 0) {
+          Aucune conférence enregistrée pour le moment.
+        } @else {
+          Aucune conférence ne correspond à « {{ searchTitle }} ».
+        }
+      </p>
+    }
+  </div>
+</section>
